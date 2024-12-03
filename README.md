@@ -10,12 +10,15 @@ yarn
 # install json-server
 npm install -g json-server
 # run json-server
-json-server --watch db.json --port 5000
+json-server --watch db.json --port 5001
 ```
 
 3. Run FE
 
 ```bash
+# create env file
+cp .env.example .env
+# run app
 yarn dev
 ```
 
