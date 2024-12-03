@@ -1,0 +1,30 @@
+services:
+  json-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./db.json:/db.json
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=development
+
+  frontend:
+    image: node:18-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+    command: "npm start"
+
+networks:
+  app-network:
+    driver: bridge
